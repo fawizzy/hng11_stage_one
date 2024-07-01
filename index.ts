@@ -10,7 +10,7 @@ const ipinfoWrapper = new IPinfoWrapper(process.env.MY_TOKEN as string);
 
 app.get("/api/hello", async (req: Request, res: Response) => {
   const { visitor_name } = req.query;
-  let location_res = await ipinfoWrapper.lookupIp("1.1.1.1"); //req.ip as string);
+  let location_res = await ipinfoWrapper.lookupIp(req.ip as string);
   const weather_res = await fetch(
     `https://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=${location_res.city}&aqi=no`
   );
