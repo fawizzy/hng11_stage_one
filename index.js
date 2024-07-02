@@ -14,7 +14,6 @@ app.get("/api/hello", async (req, res) => {
   try {
     const { visitor_name } = req.query;
     const ipdata = req.headers["x-forwarded-for"] || req.ip;
-
     let location_res = await ipinfoWrapper.lookupIp(ipdata);
     if (!visitor_name) {
       return res.json({
@@ -40,7 +39,7 @@ app.get("/api/hello", async (req, res) => {
       return res.json(response);
     } else {
       const response = {
-        client_ip: req.ip,
+        client_ip: ipdata,
         location: location_res.city,
         greeting: `Hello ${visitor_name}!, the temperature is ${weather_data.current.temp_c} degrees Celcius in ${location_res.city}`,
       };
