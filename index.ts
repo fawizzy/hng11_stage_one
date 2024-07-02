@@ -16,7 +16,6 @@ app.get("/api/hello", async (req: Request, res: Response) => {
   );
   const weather_data = await weather_res.json();
   //let location_data = await location_res.json();
-  console.log(weather_data);
 
   if (location_res.bogon) {
     res.json({
@@ -34,5 +33,5 @@ app.get("/api/hello", async (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`app listening on port ${port}`);
 });
