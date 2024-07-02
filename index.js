@@ -35,14 +35,14 @@ app.get("/api/hello", async (req, res) => {
       const response = {
         client_ip: req.ip,
         location: location_res.city,
-        greetings: `Hello ${visitor_name}!, the temperature is ${weather_data?.current?.temp_c} degrees Celcius in ${location_res?.city}`,
+        greeting: `Hello ${visitor_name}!, the temperature is ${weather_data?.current?.temp_c} degrees Celcius in ${location_res?.city}`,
       };
       return res.json(response);
     } else {
       const response = {
         client_ip: req.ip,
         location: location_res.city,
-        greetings: `Hello ${visitor_name}!, the temperature is ${weather_data.current.temp_c} degrees Celcius in ${location_res.city}`,
+        greeting: `Hello ${visitor_name}!, the temperature is ${weather_data.current.temp_c} degrees Celcius in ${location_res.city}`,
       };
       return res.json(response);
     }
