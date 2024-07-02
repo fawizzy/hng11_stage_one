@@ -13,7 +13,7 @@ const ipinfoWrapper = new IPinfoWrapper(process.env.MY_TOKEN);
 app.get("/api/hello", async (req, res) => {
   try {
     const { visitor_name } = req.query;
-    const ipdata = request.headers["x-forwarded-for"] || req.ip;
+    const ipdata = req.headers["x-forwarded-for"] || req.ip;
 
     let location_res = await ipinfoWrapper.lookupIp(ipdata);
     if (!visitor_name) {
@@ -47,7 +47,8 @@ app.get("/api/hello", async (req, res) => {
       return res.json(response);
     }
   } catch (error) {
-    return res.json({ errorCode: 500, error });
+    console.log(error);
+    return res.json({ errorCode: 500, error: "server error" });
   }
 });
 
